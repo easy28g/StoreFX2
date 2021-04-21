@@ -7,44 +7,41 @@ import sample.services.forUsers.FindLogin;
 import sample.services.forUsers.FindPassword;
 
 public class UserServiceImpl implements FindPassword, FindLogin {
-
     DBservice dBservice = new DatabaseConnection();
     Statement statement ;
-
     @Override
     public boolean loginUser(String login) {
+        String loginUser;
         try{
             statement = DatabaseConnection.connection.createStatement();
             String query = "SELECT login FROM accounts WHERE accounts.login = '"+login+"'";
             ResultSet rs = statement.executeQuery(query);
-            while (rs.next()){
-                String loginUser = rs.getString("login");
+            loginUser = rs.getString("login");
+            if (loginUser.equals(login)){
+                rs.close();
+                statement.close();
+                return true;
             }
-            rs.close();
-            statement.close();
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Неверный логин!");
         }
-        return true;
+        return false;
     }
-
     @Override
     public boolean passwordUser(String password) {
         try {
             statement = DatabaseConnection.connection.createStatement();
             String query = "SELECT password FROM accounts WHERE accounts.password = '"+password+"'";
             ResultSet rs = statement.executeQuery(query);
-            while (rs.next()){
-                String passwordUser = rs.getString("password");
+            String passwordUser = rs.getString("password");
+            if (passwordUser.equals(password)){
+                rs.close();
+                statement.close();
+                return true;
             }
-            rs.close();
-            statement.close();
         }catch (Exception e){
-            System.out.println(e.getMessage());
-            return false;
+            System.out.println("Неверный пароль");
         }
-        return true;
+        return false;
     }
-
-
 }

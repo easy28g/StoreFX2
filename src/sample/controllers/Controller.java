@@ -1,5 +1,4 @@
 package sample.controllers;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,30 +40,23 @@ public class Controller {
     void initialize() {
         DBservice dBservice = new DatabaseConnection();
         dBservice.databaseConnection();
-
         FindLogin findLogin = new UserServiceImpl();
         FindPassword findPassword = new UserServiceImpl();
-
         signInForUser.setOnAction(actionEvent -> {
             String loginButton = userLogin.getText().trim();
             boolean boolLogin = findLogin.loginUser(loginButton);
-
             String passwordButton = userPassword.getText().trim();
             boolean boolPassword = findPassword.passwordUser(passwordButton);
-
             if (boolLogin == true && boolPassword == true){
                 System.out.println("Вход выполнен!");
                 signInForUser.getScene().getWindow().hide();
-
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/sample/views/saleOperation.fxml"));
-
                 try{
                     loader.load();
                 }catch (IOException e){
                     e.printStackTrace();
                 }
-
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));

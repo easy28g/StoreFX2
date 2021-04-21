@@ -52,6 +52,5 @@ public class SaleOperation {
     @FXML
     void initialize() {
 
-
     }
 }
