@@ -1,11 +1,12 @@
 package sample.services.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class DatabaseConnection implements DBservice {
 
-    static Connection connection;
+    public static Connection connection;
+    public static Statement statement;
+
     private void ConnectionSQLite() {
         Connection connection = getConnection();
         System.out.println("Connection");
