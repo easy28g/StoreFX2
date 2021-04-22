@@ -47,11 +47,14 @@ public class userRegistrationPage {
     private Button newUserRegistration;
 
     @FXML
-    void initialize() {
+    private Button exitMune;
 
+    @FXML
+    void initialize() {
+        DBservice dBservice = new DatabaseConnection();
+        dBservice.databaseConnection();
         newUserRegistration.setOnAction(actionEvent -> {
-            DBservice dBservice = new DatabaseConnection();
-            dBservice.databaseConnection();
+
 
             CorrectUserRegistration nameUserFieldReg = new NameUserFieldReg();
             CorrectUserRegistration loginUserFieldReg = new LoginUserFieldReg();
@@ -103,6 +106,20 @@ public class userRegistrationPage {
                 alert.show();
             }
             //}
+        });
+        exitMune.setOnAction(actionEvent -> {
+            exitMune.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/views/sample.fxml"));
+            try{
+                loader.load();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         });
     }
 }

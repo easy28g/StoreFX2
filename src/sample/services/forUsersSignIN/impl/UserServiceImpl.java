@@ -1,9 +1,9 @@
-package sample.services.forUsers.impl;
+package sample.services.forUsersSignIN.impl;
 import java.sql.*;
 import sample.services.database.DBservice;
 import sample.services.database.DatabaseConnection;
-import sample.services.forUsers.FindLogin;
-import sample.services.forUsers.FindPassword;
+import sample.services.forUsersSignIN.FindLogin;
+import sample.services.forUsersSignIN.FindPassword;
 
 public class UserServiceImpl implements FindPassword, FindLogin {
     DBservice dBservice = new DatabaseConnection();

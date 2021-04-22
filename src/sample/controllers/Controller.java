@@ -13,9 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.services.database.DBservice;
 import sample.services.database.DatabaseConnection;
-import sample.services.forUsers.FindLogin;
-import sample.services.forUsers.FindPassword;
-import sample.services.forUsers.impl.UserServiceImpl;
+import sample.services.forUsersSignIN.FindLogin;
+import sample.services.forUsersSignIN.FindPassword;
+import sample.services.forUsersSignIN.impl.UserServiceImpl;
 
 public class Controller {
 
