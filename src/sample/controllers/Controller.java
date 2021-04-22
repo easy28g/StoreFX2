@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -47,7 +48,7 @@ public class Controller {
             boolean boolLogin = findLogin.loginUser(loginButton);
             String passwordButton = userPassword.getText().trim();
             boolean boolPassword = findPassword.passwordUser(passwordButton);
-            if (boolLogin == true && boolPassword == true){
+            if (boolLogin && boolPassword){
                 System.out.println("Вход выполнен!");
                 signInForUser.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
@@ -61,11 +62,27 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
+                dBservice.databaseClose();
             }else {
-                System.out.println("Вход невыполнен!");
+                Alert alert = new Alert(Alert.AlertType.WARNING,"Вход невыполнен! Неверный логин или пароль!");
+                alert.show();
+//                System.out.println("Вход невыполнен!");
             }
         });
-
+        userReg.setOnAction(actionEvent -> {
+            userReg.getScene().getWindow().hide(); // закрыть прошлое окно
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/views/userRegistrationPage.fxml"));
+            try{
+                loader.load();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        });
     }
 }
 

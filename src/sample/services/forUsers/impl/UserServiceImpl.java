@@ -1,5 +1,4 @@
 package sample.services.forUsers.impl;
-
 import java.sql.*;
 import sample.services.database.DBservice;
 import sample.services.database.DatabaseConnection;
