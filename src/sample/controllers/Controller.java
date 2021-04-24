@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.services.database.DBservice;
 import sample.services.database.DatabaseConnection;
+import sample.services.forUsersSignIN.FindActiveAccount;
 import sample.services.forUsersSignIN.FindLogin;
 import sample.services.forUsersSignIN.FindPassword;
 import sample.services.forUsersSignIN.impl.UserServiceImpl;
@@ -43,12 +44,14 @@ public class Controller {
         dBservice.databaseConnection();
         FindLogin findLogin = new UserServiceImpl();
         FindPassword findPassword = new UserServiceImpl();
+        FindActiveAccount findActiveAccount = new UserServiceImpl();
         signInForUser.setOnAction(actionEvent -> {
             String loginButton = userLogin.getText().trim();
             boolean boolLogin = findLogin.loginUser(loginButton);
             String passwordButton = userPassword.getText().trim();
             boolean boolPassword = findPassword.passwordUser(passwordButton);
-            if (boolLogin && boolPassword){
+            boolean boolActive = findActiveAccount.checkActiveAccount(loginButton);
+            if (boolLogin && boolPassword && boolActive){
                 System.out.println("Вход выполнен!");
                 signInForUser.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
@@ -63,10 +66,14 @@ public class Controller {
                 stage.setScene(new Scene(root));
                 stage.show();
                 dBservice.databaseClose();
-            }else {
+            }
+            else if (boolLogin && boolPassword && boolActive==false){
+                Alert alert = new Alert(Alert.AlertType.WARNING,"Ваш аккаунт был заблокирован!");
+                alert.show();
+            }
+            else {
                 Alert alert = new Alert(Alert.AlertType.WARNING,"Вход невыполнен! Неверный логин или пароль!");
                 alert.show();
-//                System.out.println("Вход невыполнен!");
             }
         });
         userReg.setOnAction(actionEvent -> {

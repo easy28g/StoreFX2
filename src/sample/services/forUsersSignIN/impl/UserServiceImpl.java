@@ -2,10 +2,11 @@ package sample.services.forUsersSignIN.impl;
 import java.sql.*;
 import sample.services.database.DBservice;
 import sample.services.database.DatabaseConnection;
+import sample.services.forUsersSignIN.FindActiveAccount;
 import sample.services.forUsersSignIN.FindLogin;
 import sample.services.forUsersSignIN.FindPassword;
 
-public class UserServiceImpl implements FindPassword, FindLogin {
+public class UserServiceImpl implements FindPassword, FindLogin, FindActiveAccount {
     DBservice dBservice = new DatabaseConnection();
     Statement statement ;
     @Override
@@ -40,6 +41,22 @@ public class UserServiceImpl implements FindPassword, FindLogin {
             }
         }catch (Exception e){
             System.out.println("Неверный пароль");
+        }
+        return false;
+    }
+
+    @Override
+    public boolean checkActiveAccount(String login) {
+        try {
+            statement = DatabaseConnection.connection.createStatement();
+            String query = "SELECT active FROM accounts WHERE accounts.login = '"+login+"'";
+            ResultSet resultSet = statement.executeQuery(query);
+            int active = resultSet.getInt("active");
+            if (active == 1){
+                return true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return false;
     }
