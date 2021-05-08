@@ -1,12 +1,15 @@
 package sample.services.database;
 import java.sql.*;
 public class DatabaseConnection implements DBservice {
+
     public static Connection connection;
     public static Statement statement;
+
     private void ConnectionSQLite() {
         Connection connection = getConnection();
         System.out.println("Connection");
     }
+
     private Connection getConnection() {
         try{
             Class.forName("org.sqlite.JDBC");

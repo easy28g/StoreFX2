@@ -8,6 +8,11 @@ public class Categories {
 
     public Categories() { }
 
+    public Categories(String name, int active) {
+        this.name = name;
+        this.active = active;
+    }
+
     public Categories(int id, String name, int active) {
         this.id = id;
         this.name = name;
@@ -36,5 +41,13 @@ public class Categories {
 
     public void setActive(int active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return "Categories{" +
+                "name='" + name + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

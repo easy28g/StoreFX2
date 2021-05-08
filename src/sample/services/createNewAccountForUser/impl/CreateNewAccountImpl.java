@@ -4,9 +4,11 @@ import sample.models.Users;
 import sample.services.createNewAccountForUser.CreateNewAccount;
 import sample.services.database.DatabaseConnection;
 
+import java.sql.Connection;
 import java.sql.Statement;
 
 public class CreateNewAccountImpl implements CreateNewAccount {
+
     @Override
     public boolean createAccount(int id, String login, String password) {
         try {

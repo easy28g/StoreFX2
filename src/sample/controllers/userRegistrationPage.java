@@ -49,6 +49,7 @@ public class userRegistrationPage {
     @FXML
     private Button exitMune;
 
+    // регистрация нового пользователя
     @FXML
     void initialize() {
         DBservice dBservice = new DatabaseConnection();

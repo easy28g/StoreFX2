@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="390.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainFormController">
+   <children>
+      <GridPane layoutX="145.0" layoutY="175.0" prefHeight="184.0" prefWidth="461.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.60003662109375" minWidth="10.0" prefWidth="184.0000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.5999725341797" minWidth="10.0" prefWidth="195.1999755859375" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="61.600006103515625" minHeight="10.0" prefHeight="60.000006103515624" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="80.00000915527343" minHeight="10.0" prefHeight="58.39999389648438" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="66.99997558593749" minHeight="10.0" prefHeight="66.99997558593749" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="categoriesINButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Категории">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Кнопка" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Кнопка" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Кнопка" GridPane.columnIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button fx:id="exitSignInButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Выход" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" style="-fx-background-radius: 6;" text="Кнопка" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+         </children>
+      </GridPane>
+      <AnchorPane prefHeight="89.0" prefWidth="602.0" style="-fx-background-color: #2E3348;">
+         <children>
+            <Label layoutX="170.0" layoutY="13.0" prefHeight="58.0" prefWidth="288.0" text="Главное меню" textFill="WHITE">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="183.0" layoutY="118.0" prefHeight="39.0" prefWidth="251.0" text="Нажмите на кнопку">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

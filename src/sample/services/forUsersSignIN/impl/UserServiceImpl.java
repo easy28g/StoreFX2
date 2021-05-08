@@ -18,8 +18,8 @@ public class UserServiceImpl implements FindPassword, FindLogin, FindActiveAccou
             ResultSet rs = statement.executeQuery(query);
             loginUser = rs.getString("login");
             if (loginUser.equals(login)){
-                rs.close();
-                statement.close();
+//                rs.close();
+//                statement.close();
                 return true;
             }
         }catch (Exception e){
@@ -35,8 +35,8 @@ public class UserServiceImpl implements FindPassword, FindLogin, FindActiveAccou
             ResultSet rs = statement.executeQuery(query);
             String passwordUser = rs.getString("password");
             if (passwordUser.equals(password)){
-                rs.close();
-                statement.close();
+//                rs.close();
+//                statement.close();
                 return true;
             }
         }catch (Exception e){
@@ -51,9 +51,13 @@ public class UserServiceImpl implements FindPassword, FindLogin, FindActiveAccou
             statement = DatabaseConnection.connection.createStatement();
             String query = "SELECT active FROM accounts WHERE accounts.login = '"+login+"'";
             ResultSet resultSet = statement.executeQuery(query);
+
             int active = resultSet.getInt("active");
+
             if (active == 1){
                 return true;
+            }else {
+                return false;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

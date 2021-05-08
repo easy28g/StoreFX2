@@ -38,6 +38,7 @@ public class Controller {
     @FXML
     private PasswordField userPassword;
 
+    // выход в систему
     @FXML
     void initialize() {
         DBservice dBservice = new DatabaseConnection();
@@ -51,11 +52,12 @@ public class Controller {
             String passwordButton = userPassword.getText().trim();
             boolean boolPassword = findPassword.passwordUser(passwordButton);
             boolean boolActive = findActiveAccount.checkActiveAccount(loginButton);
+
             if (boolLogin && boolPassword && boolActive){
                 System.out.println("Вход выполнен!");
                 signInForUser.getScene().getWindow().hide();
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/sample/views/saleOperation.fxml"));
+                loader.setLocation(getClass().getResource("/sample/views/mainForm.fxml"));
                 try{
                     loader.load();
                 }catch (IOException e){
@@ -65,15 +67,17 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
-                dBservice.databaseClose();
+                return;
             }
             else if (boolLogin && boolPassword && boolActive==false){
                 Alert alert = new Alert(Alert.AlertType.WARNING,"Ваш аккаунт был заблокирован!");
                 alert.show();
+                return;
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING,"Вход невыполнен! Неверный логин или пароль!");
                 alert.show();
+                return;
             }
         });
         userReg.setOnAction(actionEvent -> {
