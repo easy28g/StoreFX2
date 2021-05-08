@@ -14,7 +14,7 @@ public class DatabaseConnection implements DBservice {
         try{
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(
-                    "jdbc:sqlite:D:\\Java\\StoreDbJavaFX\\Store.DB");
+                    "jdbc:sqlite:D:\\Azamat\\Javaitschool\\5month\\StoreFX2\\Store.DB");
 //            System.out.println("Connection");
             return connection;
         }catch (Exception e){
